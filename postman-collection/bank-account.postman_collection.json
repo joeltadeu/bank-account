@@ -1,0 +1,640 @@
+{
+	"info": {
+		"_postman_id": "445e3897-e081-41bc-96fb-ab5cab4ffffb",
+		"name": "bank-account",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Open an account",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json();\r",
+							"postman.setEnvironmentVariable(\"account-id\", data.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"accountHolder\": \"Jordan McGragor\",\r\n    \"accountType\": \"CURRENT\",\r\n    \"balance\": 12000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url-account-command}}/api/v1/accounts",
+					"host": [
+						"{{url-account-command}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"accounts"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "201_Created",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountHolder\": \"James Oliver\",\r\n    \"accountType\": \"CURRENT\",\r\n    \"balance\": 12000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-account-command}}/api/v1/accounts",
+							"host": [
+								"{{url-account-command}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"accounts"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 07 Jan 2022 18:56:23 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Bank account creation request completed successfully\",\n    \"id\": \"c606c927-cd38-4e6f-8274-ced3cf7cea15\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Deposit funds",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"amount\": 3000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url-account-command}}/api/v1/accounts/{{account-id}}/deposit",
+					"host": [
+						"{{url-account-command}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"accounts",
+						"{{account-id}}",
+						"deposit"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200_OK",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\": 3000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-account-command}}/api/v1/accounts/{{account-id}}/deposit",
+							"host": [
+								"{{url-account-command}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"accounts",
+								"{{account-id}}",
+								"deposit"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 07 Jan 2022 18:56:57 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Deposit funds request completed successfully\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Withdraw funds",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"amount\": 1500\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url-account-command}}/api/v1/accounts/{{account-id}}/withdraw",
+					"host": [
+						"{{url-account-command}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"accounts",
+						"{{account-id}}",
+						"withdraw"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200_OK",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\": 1500\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-account-command}}/api/v1/accounts/{{account-id}}/withdraw",
+							"host": [
+								"{{url-account-command}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"accounts",
+								"{{account-id}}",
+								"withdraw"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 07 Jan 2022 18:57:15 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Withdraw funds request completed successfully\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Close account",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url-account-command}}/api/v1/accounts/{{account-id}}",
+					"host": [
+						"{{url-account-command}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"accounts",
+						"{{account-id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200_OK",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url-account-command}}/api/v1/accounts/{{account-id}}",
+							"host": [
+								"{{url-account-command}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"accounts",
+								"{{account-id}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 07 Jan 2022 18:57:34 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Bank account closure request successfully completed!\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get accounts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url-account-query}}/api/v1/accounts/",
+					"host": [
+						"{{url-account-query}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"accounts",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200_OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url-account-query}}/api/v1/accounts/",
+							"host": [
+								"{{url-account-query}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"accounts",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 07 Jan 2022 18:57:54 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"133c5c2b-ce68-4722-8a86-5671cf97f209\",\n        \"accountHolder\": \"Mark Cors\",\n        \"creationDate\": \"2022-01-04T12:00:50.234152\",\n        \"accountType\": \"CURRENT\",\n        \"balance\": 10000\n    },\n    {\n        \"id\": \"82d62b56-dea7-427b-a767-0dcd5667d69c\",\n        \"accountHolder\": \"Joel Silva\",\n        \"creationDate\": \"2022-01-04T12:00:50.161897\",\n        \"accountType\": \"CURRENT\",\n        \"balance\": 15000\n    },\n    {\n        \"id\": \"f7d607b1-59bc-4ebc-baf5-f56409feb4e8\",\n        \"accountHolder\": \"James Doe\",\n        \"creationDate\": \"2022-01-04T12:00:50.220825\",\n        \"accountType\": \"CURRENT\",\n        \"balance\": 7000\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get account by Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url-account-query}}/api/v1/accounts/{{account-id}}",
+					"host": [
+						"{{url-account-query}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"accounts",
+						"{{account-id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200_OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url-account-query}}/api/v1/accounts/{{account-id}}",
+							"host": [
+								"{{url-account-query}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"accounts",
+								"{{account-id}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 07 Jan 2022 18:58:47 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"95baaa0c-08c9-4961-b0cc-3851c3f9068a\",\n    \"accountHolder\": \"Jordan McGragor\",\n    \"creationDate\": \"2022-01-07T15:58:41.457812\",\n    \"accountType\": \"CURRENT\",\n    \"balance\": 12000\n}"
+				}
+			]
+		},
+		{
+			"name": "Get account by holder",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url-account-query}}/api/v1/accounts/byHolder/Jordan McGragor",
+					"host": [
+						"{{url-account-query}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"accounts",
+						"byHolder",
+						"Jordan McGragor"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200_OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url-account-query}}/api/v1/accounts/byHolder/Jordan McGragor",
+							"host": [
+								"{{url-account-query}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"accounts",
+								"byHolder",
+								"Jordan McGragor"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 07 Jan 2022 18:59:29 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"95baaa0c-08c9-4961-b0cc-3851c3f9068a\",\n        \"accountHolder\": \"Jordan McGragor\",\n        \"creationDate\": \"2022-01-07T15:58:41.457812\",\n        \"accountType\": \"CURRENT\",\n        \"balance\": 12000\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get accounts with balance",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url-account-query}}/api/v1/accounts/byBalance/LESS_THAN/10000",
+					"host": [
+						"{{url-account-query}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"accounts",
+						"byBalance",
+						"LESS_THAN",
+						"10000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200_OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url-account-query}}/api/v1/accounts/byBalance/LESS_THAN/10000",
+							"host": [
+								"{{url-account-query}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"accounts",
+								"byBalance",
+								"LESS_THAN",
+								"10000"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 07 Jan 2022 18:59:47 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"f7d607b1-59bc-4ebc-baf5-f56409feb4e8\",\n        \"accountHolder\": \"James Doe\",\n        \"creationDate\": \"2022-01-04T12:00:50.220825\",\n        \"accountType\": \"CURRENT\",\n        \"balance\": 7000\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Restore read db",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{url-account-command}}/api/v1/operations/database/restore",
+					"host": [
+						"{{url-account-command}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"operations",
+						"database",
+						"restore"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -2,6 +2,10 @@
 
 Learn to build distributed Event-driven Microservices, CQRS, Event Sourcing using Kafka, MySQL and MongoDB
 
+## Architecture:
+![Alt text](assets/bank-account-architecture.svg?raw=true "Bank Account Architecture")
+
+
 ## There are two microservices:
 
 - **Account Query** : This microservice is responsible for read information about the accounts using the read database.
@@ -43,6 +47,11 @@ In docker-compose.yml file:
 
 - Account Command : **__5000__** port is mapped to **__5000__** port of host
 - Account Query : **__5001__** port is mapped to **__5001__** port of host
+
+### Resources
+
+Project is based on the course:
+https://www.udemy.com/course/java-microservices-cqrs-event-sourcing-with-kafka/
 
 ## VERSIONS
 
